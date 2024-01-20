@@ -30,7 +30,7 @@ const _publish = Meteor.publish
 Meteor.publish = function (name, handler, options) {
   return _publish.call(this, name, function (...args) {
     // This function is called repeatedly in publications
-    return publishUserId.withValue(this && this.userId, () => handler.apply(this, args))
+    return handler.apply(this, args)
   }, options)
 }
 
